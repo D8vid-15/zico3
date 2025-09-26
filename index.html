@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZICO OIL - Powering Tomorrow with Reliable Energy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --pepper-red: #D32F2F;
+            --yellow: #FFC107;
+            --dark-gray: #333333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--pepper-red);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+        }
+        
+        .btn-yellow {
+            background-color: var(--yellow);
+            color: var(--dark-gray);
+        }
+        
+        .btn-yellow:hover {
+            background-color: #ffa000;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--yellow);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--yellow);
+        }
+
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+        }
+        
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            padding: 100px 0;
+            background-color: var(--white);
+            overflow: hidden;
+        }
+        
+        .welcome-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .welcome-text {
+            flex: 1;
+        }
+        
+        .welcome-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .welcome-image:hover {
+            transform: perspective(1000px) rotateY(0);
+        }
+        
+        .welcome-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            background-color: var(--pepper-red);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .welcome-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .welcome-text h2 span {
+            color: var(--pepper-red);
+        }
+        
+        .welcome-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .feature-list i {
+            color: var(--yellow);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .welcome-cta {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        /* Animation Classes */
+        .animate-in {
+            opacity: 1 !important;
+            transform: translate(0) !important;
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-bottom {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .animated {
+            opacity: 1;
+            transform: translate(0);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--pepper-red);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            color: var(--pepper-red);
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('image/Stat2.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--pepper-red);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--yellow);
+        }
+        
+        .newsletter form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter button {
+            background-color: var(--pepper-red);
+            color: var(--white);
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--pepper-red);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Preloader Styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .gear-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+        }
+
+        .gear {
+            position: absolute;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            animation: rotate 4s linear infinite;
+        }
+
+        .gear-1 {
+            width: 120px;
+            height: 120px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-top-color: #D32F2F;
+            border-right-color: #D32F2F;
+            border-bottom-color: #FFC107;
+            border-left-color: #FFC107;
+        }
+
+        .gear-2 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 20%;
+            border-top-color: #FFC107;
+            border-right-color: #D32F2F;
+            border-bottom-color: #D32F2F;
+            border-left-color: #FFC107;
+            animation-direction: reverse;
+            animation-duration: 3s;
+        }
+
+        .gear-3 {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            right: 20%;
+            border-top-color: #D32F2F;
+            border-right-color: #FFC107;
+            border-bottom-color: #FFC107;
+            border-left-color: #D32F2F;
+            animation-duration: 2.5s;
+        }
+
+        .center-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #D32F2F 0%, #b71c1c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(211, 47, 47, 0.5);
+        }
+
+        .center-logo::before {
+            content: 'Z';
+            color: #FFC107;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .loading-text {
+            color: #FFC107;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #D32F2F 0%, #FFC107 100%);
+            border-radius: 2px;
+            width: 0%;
+            animation: loadProgress 2.5s ease forwards;
+        }
+
+        .company-name {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        .tagline {
+            color: #D32F2F;
+            font-size: 14px;
+            margin-top: 5px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes loadProgress {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Oil drop effect */
+        .oil-drops {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .oil-drop {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #D32F2F;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: oilFlow 3s ease-in-out infinite;
+        }
+
+        .oil-drop:nth-child(1) {
+            top: 30%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .oil-drop:nth-child(2) {
+            top: 60%;
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .oil-drop:nth-child(3) {
+            top: 40%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        @keyframes oilFlow {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.2);
+                opacity: 0.3;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .nav-links li {
+                margin-left: 20px;
+            }
+            
+            .welcome-content {
+                flex-direction: column;
+            }
+            
+            .welcome-image {
+                transform: none;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+                z-index: 1001;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .welcome-text h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="gear-container">
+            <div class="gear gear-1"></div>
+            <div class="gear gear-2"></div>
+            <div class="gear gear-3"></div>
+            <div class="center-logo"></div>
+        </div>
+
+        <div class="oil-drops">
+            <div class="oil-drop"></div>
+            <div class="oil-drop"></div>
+            <div class="oil-drop"></div>
+        </div>
+
+        <div class="loading-text">LOADING...</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="company-name">ZICO PETROLEUM</div>
+        <div class="tagline">Powering Tomorrow</div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="image/logo.jpeg" alt="ZICO PETROLEUM">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: url('image/engine.jpg');"></div>
+            <div class="slide" style="background-image: url('image/engine2.jpg');"></div>
+            <div class="slide" style="background-image: url('image/engine3.jpg');"></div>
+            <div class="slide-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Quality Lubricant for Optimum Performance of Engines</h1>
+            <p>ZICO PETROLEUM & MARKETING COMPANY LTD is committed to excellence in production and marketing of quality lubricant across Nigeria and beyond.</p>
+            <div class="hero-buttons">
+                <a href="about.html" class="btn">Learn More</a>
+                <a href="contact.html" class="btn btn-yellow">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <div class="container">
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <span class="section-tag">Welcome to ZICO OIL</span>
+                    <h2>Leading the <span>Petroleum Industry</span> with Innovation and Excellence</h2>
+                    <p>For over three decades, ZICO PETROLEUM & MARKETING COMPANY LTD has been at the forefront of the energy sector, providing reliable and sustainable energy solutions across Nigeria and beyond. Our commitment to excellence, innovation, and environmental stewardship has made us a trusted partner in powering progress.</p>
+                    
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Industry-leading expertise in lubricant production</li>
+                        <li><i class="fas fa-check-circle"></i> State-of-the-art refining and distribution facilities</li>
+                        <li><i class="fas fa-check-circle"></i> Commitment to sustainable and responsible operations</li>
+                        <li><i class="fas fa-check-circle"></i> Dedicated to community development and empowerment</li>
+                    </ul>
+                    
+                    <div class="welcome-cta">
+                        <a href="about.html" class="btn">Discover Our Story</a>
+                    </div>
+                </div>
+                <div class="welcome-image slide-in-right">
+                    <img src="image/home.jpg" alt="ZICO PETROLEUM COMPANY">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card slide-in-left">
+                    <div class="service-img" style="background-image: url('image/prod.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Lubricant Production</h3>
+                        <p>Harnessing advanced processes to formulate and produce high-performance lubricants that enhance machinery efficiency, ensure durability, and support sustainable industrial growth.</p>
+                        <a href="service.html" class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="service-card slide-in-bottom">
+                    <div class="service-img" style="background-image: url('image/sales.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Petroleum sales & Distribution</h3>
+                        <p>Delivering quality petroleum products through efficient sales and reliable distribution networks that meet energy demands while ensuring safety, accessibility, and customer satisfaction.</p>
+                        <a href="service.html" class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="service-card slide-in-right">
+                    <div class="service-img" style="background-image: url('image/haulage.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Haulage Services</h3>
+                        <p>Providing dependable haulage solutions with modern fleets and skilled logistics, ensuring safe, timely, and cost-effective transportation of goods across diverse destinations.</p>
+                        <a href="Ik.html" class="btn">Contact IK Enterprise</a>
+                    </div>
+                </div>
+         </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="150+">0</div>
+                    <h3>Projects Completed</h3>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="35+">0</div>
+                    <h3>Years of Experience</h3>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="13+">0</div>
+                    <h3>Operating States</h3>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="1000+">0</div>
+                    <h3>Employees</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ZICO PETROLEUM & MARKETING COMPANY LTD</h3>
+                    <p>Leading the way in Petroleum innovation and reliability, powering progress for a better tomorrow.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1F6GjeX4zG/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="project.html">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="service.html">Blending Plant</a></li>
+                        <li><a href="service.html">Petrol Service Station</a></li>
+                        <li><a href="service.html">LPG</a></li>
+                        <li><a href="service.html">Lubricant sales and distribution</a></li>
+                        <li><a href="service.html">Haulage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>166 Benin-Auchi Road,
+Aduwawa, Benin-City, Edo state, Nigeria</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                       <p>+234 8161521659/ +234 7051838123</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>zicoplast@yahoo.com</p>
+                    </div>
+                    <div class="newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to our newsletter for updates</p>
+                        <form>
+                            <input type="email" placeholder="Your Email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ZICO OIL. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Hero slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Animated stats counter
+        function animateValue(obj, start, end, duration, suffix = '') {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start) + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Initialize counters when stats section is in view
+        const statsSection = document.querySelector('.stats');
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let counted = false;
+
+        function checkIfInView() {
+            const rect = statsSection.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScroll() {
+            if (checkIfInView() && !counted) {
+                statNumbers.forEach(stat => {
+                    const dataCount = stat.getAttribute('data-count');
+                    const target = parseInt(dataCount);
+                    const suffix = dataCount.replace(/[0-9]/g, '');
+                    animateValue(stat, 0, target, 2000, suffix);
+                });
+                counted = true;
+                window.removeEventListener('scroll', handleScroll);
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        // Initial check in case stats section is already in view
+        handleScroll();
+
+        // Slide-in animation for elements
+        function checkSlide() {
+            const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-bottom');
+            
+            slideElements.forEach(element => {
+                const slideInAt = (window.scrollY + window.innerHeight) - element.offsetHeight / 2;
+                const elementBottom = element.offsetTop + element.offsetHeight;
+                const isHalfShown = slideInAt > element.offsetTop;
+                const isNotScrolledPast = window.scrollY < elementBottom;
+                
+                if (isHalfShown && isNotScrolledPast) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkSlide);
+        // Initial check in case elements are already in view
+        checkSlide();
+
+        // Welcome section text animation
+        function animateWelcomeText() {
+            const welcomeSection = document.querySelector('.welcome');
+            const rect = welcomeSection.getBoundingClientRect();
+            const isInView = (rect.top <= window.innerHeight && rect.bottom >= 0);
+            
+            if (isInView) {
+                // Animate the welcome tag
+                document.querySelector('.section-tag').classList.add('animate-in');
+                
+                // Animate the heading with delay
+                setTimeout(() => {
+                    document.querySelector('.welcome-text h2').classList.add('animate-in');
+                }, 300);
+                
+                // Animate the paragraph with delay
+                setTimeout(() => {
+                    document.querySelector('.welcome-text p').classList.add('animate-in');
+                }, 600);
+                
+                // Animate each feature list item with staggered delay
+                const featureItems = document.querySelectorAll('.feature-list li');
+                featureItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('animate-in');
+                    }, 900 + (index * 200));
+                });
+                
+                // Animate the CTA button
+                setTimeout(() => {
+                    document.querySelector('.welcome-cta').classList.add('animate-in');
+                }, 1700);
+                
+                // Remove event listener after animation
+                window.removeEventListener('scroll', animateWelcomeText);
+            }
+        }
+
+        // Add scroll event listener for welcome section animation
+        window.addEventListener('scroll', animateWelcomeText);
+        // Initial check in case welcome section is already in view
+        animateWelcomeText();
+
+        // Preloader functionality
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(function() {
+                preloader.classList.add('hidden');
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 3000); // Hide preloader after 3 seconds
+        });
+    </script>
+</body>
+</html>

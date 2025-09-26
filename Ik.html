@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IK ENTERPRISE NIGERIA LIMITED</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Preloader Styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0054a6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .preloader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .preloader-logo {
+            width: 100px;
+            height: 100px;
+            animation: spin 2s linear infinite;
+        }
+
+        .preloader-text {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #0054a6;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+         .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #cce6ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 84, 166, 0.8), rgba(0, 84, 166, 0.9)), url('https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: #0054a6;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #cce6ff;
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #0054a6;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Modal */
+        .service-modal-btn {
+            display: block;
+            margin: 0 auto;
+            background-color: #0054a6;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-modal-btn:hover {
+            background-color: #003366;
+            transform: translateY(-3px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            background-color: #0054a6;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #cce6ff;
+        }
+
+        .slideshow-container {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-content {
+            background: rgba(0, 84, 166, 0.8);
+            color: white;
+            padding: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .slide-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .slide-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slide-dot.active {
+            background-color: white;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        /* Collaborations Section */
+        .collaborations {
+            padding: 80px 0;
+            background-color: #e6f0ff;
+        }
+
+        .collaboration-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .collaboration-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .collaboration-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .collaboration-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .collaboration-content {
+            padding: 25px;
+        }
+
+        .collaboration-content h3 {
+            color: #0054a6;
+            margin-bottom: 15px;
+        }
+
+        .collaboration-modal-btn {
+            background-color: #0054a6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .collaboration-modal-btn:hover {
+            background-color: #003366;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .about-text h2 {
+            color: #0054a6;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #003366;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #cce6ff;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #cce6ff;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            color: white;
+            background-color: #0054a6;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: white;
+            color: #0054a6;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Haulage Gallery Styles */
+        .haulage-gallery {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .gallery-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 84, 166, 0.1), rgba(0, 84, 166, 0.3));
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image::after {
+            opacity: 0.7;
+        }
+
+        .gallery-content {
+            padding: 25px;
+        }
+
+        .gallery-content h3 {
+            color: #0054a6;
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .gallery-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .gallery-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gallery-content ul li {
+            color: #333;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .gallery-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0054a6;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .slideshow-container {
+                height: 300px;
+            }
+
+            .slide-content h3 {
+                font-size: 24px;
+            }
+
+            .slide-content p {
+                font-size: 16px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .gallery-image {
+                height: 200px;
+            }
+
+            .gallery-content {
+                padding: 20px;
+            }
+
+            .gallery-content h3 {
+                font-size: 20px;
+            }
+
+            .about-text,
+            .about-image {
+                flex: 100%;
+                padding-right: 0;
+            }
+
+            .about-text {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <img src="image/IK LOGO.PNG" alt="Loading..." class="preloader-logo">
+            <div class="preloader-text">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="image/IK LOGO.PNG" alt="ISAAC IKEKHUAME ENTERPRISE">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Ik.html">Home</a></li>
+                    <li><a href="contactIK.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Leading Enterprise Solutions in Nigeria</h2>
+            <p>Providing exceptional haulage services with excellence, integrity, and innovation</p>
+            <a href="#gallery" class="btn">Our Services</a>
+        </div>
+    </section>
+
+    <!-- Haulage Gallery Section -->
+    <section class="haulage-gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Haulage Services</h2>
+                <p>Comprehensive transportation solutions tailored to meet your business needs</p>
+            </div>
+           
+               
+              
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image" id="haulage-image"></div>
+                    <div class="gallery-content">
+                        <h3>Long Haul Transportation</h3>
+                        <p>Cross-country transportation services with modern fleet and experienced drivers. We ensure safe and timely delivery across Nigeria.</p>
+                        <ul>
+                            <li>Long-distance haulage specialists</li>
+                            <li>GPS tracking and monitoring</li>
+                            <li>24/7 customer support</li>
+                        </ul>
+                    </div>
+                </div>
+               
+             
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Collaborations Section -->
+    <section class="collaborations" id="collaborations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Collaborations</h2>
+                <p>We partner with industry leaders to provide comprehensive solutions</p>
+            </div>
+            <div class="collaboration-cards">
+                <div class="collaboration-card">
+                    <div class="collaboration-img" style="background-image: url('image/front2.JPG')"></div>
+                    <div class="collaboration-content">
+                        <h3>Zafike Royal Hotel</h3>
+                        <p>We collaborate with one of Nigeria's premium and luxurious hotels, providing comfort and exceptional service to customers.</p>
+                        <button class="collaboration-modal-btn" data-modal="hotelModal">Learn More</button>
+                    </div>
+                </div>
+                <div class="collaboration-card">
+                    <div class="collaboration-img" style="background-image: url('image/logo2.jpg')"></div>
+                    <div class="collaboration-content">
+                        <h3>Zico Petroleum and Lubricant Company</h3>
+                        <p>Partnership with a leading petroleum and lubricant company to ensure quality fuel and lubricant solutions.</p>
+                        <button class="collaboration-modal-btn" data-modal="petroleumModal">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Modals -->
+    <div id="hotelModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Zafike Royal Hotel Collaboration</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div style="padding: 30px;">
+                <p>IKEKHUAME ENTERPRISE is proud to collaborate with Zafike Royal Hotel, one of Nigeria's premier luxury hotels. This partnership allows us to offer comprehensive travel and accommodation solutions to our clients.</p>
+                <h3>Benefits of our collaboration:</h3>
+                <ul>
+                    <li>Special corporate rates for our clients</li>
+                    <li>Priority booking and reservation services</li>
+                    <li>Integrated travel and accommodation packages</li>
+                    <li>Exclusive access to hotel amenities</li>
+                </ul>
+                <p>Whether you're traveling for business or leisure, our partnership with Zafike Royal Hotel ensures a comfortable and luxurious stay.</p>
+                <a href="https://zafikeroyalhotel.com/" target="_blank" class="btn">Visit Zafike Royal Hotel</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="petroleumModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Zico Petroleum Collaboration</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div style="padding: 30px;">
+                <p>Our collaboration with Zico Petroleum and Lubricant Company Limited ensures that our haulage operations are supported by high-quality fuel and lubricant products.</p>
+                <h3>Key aspects of our partnership:</h3>
+                <ul>
+                    <li>Premium quality fuels for our fleet</li>
+                    <li>Specialized lubricants for heavy-duty vehicles</li>
+                    <li>Regular maintenance and servicing support</li>
+                    <li>Fuel supply agreements for optimal operations</li>
+                </ul>
+                <p>This partnership guarantees that our vehicles operate at peak efficiency, reducing downtime and ensuring timely deliveries for our clients.</p>
+                <a href="index.html" target="_blank" class="btn">Visit ZPMCL</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About ISAAC IKEKHUAME ENTERPRISE NIG LTD</h2>
+                    <p>IKEKHUAME ENTERPRISE NIGERIA LIMITED is a leading provider of haulage solutions with a strong reputation for excellence and reliability. Since our establishment, we have been committed to delivering top-quality transportation services to our clients across Nigeria.</p>
+                    <p>Our team of experienced professionals is dedicated to understanding your unique business needs and providing customized haulage solutions that drive growth and success.</p>
+                    <p>With a focus on innovation, integrity, and customer satisfaction, we have built long-lasting relationships with our clients and partners.</p>
+                </div>
+                <div class="about-image">
+                    <img src="image/IK LOGO.PNG" alt="IKEKHUAME ENTERPRISE Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ISAAC IKEKHUAME ENTERPRISE NIG LTD</h3>
+                    <p>Providing exceptional haulage solutions with excellence, integrity, and innovation.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="Ik.html">Home</a></li>
+                        <li><a href="#gallery">Our Services</a></li>
+                        <li><a href="#collaborations">Collaborations</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="contactIK.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 IKEKHUAME ENTERPRISE NIGERIA LIMITED. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Ensure the script runs after the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing modals...');
+
+            // Service Modal Functionality
+            const serviceModal = document.getElementById('serviceModal');
+            const serviceModalBtn = document.querySelector('.service-modal-btn');
+            const closeBtns = document.querySelectorAll('.close-btn');
+            const collaborationModalBtns = document.querySelectorAll('.collaboration-modal-btn');
+            const hotelModal = document.getElementById('hotelModal');
+            const petroleumModal = document.getElementById('petroleumModal');
+
+            // Open service modal
+            if (serviceModalBtn) {
+                serviceModalBtn.addEventListener('click', () => {
+                    console.log('Service modal button clicked');
+                    serviceModal.style.display = 'block';
+                });
+            }
+
+            // Open collaboration modals
+            collaborationModalBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    console.log('Collaboration modal button clicked');
+                    const modalId = btn.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'block';
+                    } else {
+                        console.error('Modal not found:', modalId);
+                    }
+                });
+            });
+
+            // Close modals
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent event bubbling
+                    console.log('Close button clicked for modal');
+                    if (serviceModal) {
+                        serviceModal.style.display = 'none';
+                        console.log('Service modal closed');
+                    }
+                    if (hotelModal) {
+                        hotelModal.style.display = 'none';
+                        console.log('Hotel modal closed');
+                    }
+                    if (petroleumModal) {
+                        petroleumModal.style.display = 'none';
+                        console.log('Petroleum modal closed');
+                    }
+                });
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === serviceModal) {
+                    serviceModal.style.display = 'none';
+                }
+                if (e.target === hotelModal) {
+                    hotelModal.style.display = 'none';
+                }
+                if (e.target === petroleumModal) {
+                    petroleumModal.style.display = 'none';
+                }
+            });
+
+            // Slideshow functionality
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slide-dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                currentSlide = (n + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            // Next/previous controls
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    showSlide(currentSlide + 1);
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    showSlide(currentSlide - 1);
+                });
+            }
+
+            // Dot controls
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            // Auto-advance slides
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+
+            // Haulage image slideshow
+            const haulageImages = [
+                "image/truck1.jpg",
+                "image/truck2.jpg",
+                "image/truck5.jpg",
+                "image/truck3.jpg",
+                "image/truck4.jpg"
+            ];
+            let currentImageIndex = 0;
+            const haulageImageElement = document.getElementById('haulage-image');
+            function changeHaulageImage() {
+                haulageImageElement.style.backgroundImage = `url('${haulageImages[currentImageIndex]}')`;
+                currentImageIndex = (currentImageIndex + 1) % haulageImages.length;
+            }
+            changeHaulageImage(); // Set initial image
+            setInterval(changeHaulageImage, 3000);
+
+            // Preloader functionality
+            window.onload = function() {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('hidden');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            };
+        });
+    </script>
+</body>
+</html>

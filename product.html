@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - ZICO OIL</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --pepper-red: #D32F2F;
+            --yellow: #FFC107;
+            --dark-gray: #333333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--pepper-red);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+        }
+        
+        .btn-yellow {
+            background-color: var(--yellow);
+            color: var(--dark-gray);
+        }
+        
+        .btn-yellow:hover {
+            background-color: #ffa000;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--yellow);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--yellow);
+        }
+
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            height: 40vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+        }
+        
+        .breadcrumb a {
+            color: var(--yellow);
+            text-decoration: none;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 10px;
+            color: var(--white);
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+        }
+        
+        /* Products Intro */
+        .products-intro {
+            padding: 80px 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--pepper-red);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            padding: 60px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            background-color: var(--light-gray);
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .product-content h3 {
+            font-size: 1.5rem;
+            color: var(--pepper-red);
+            margin-bottom: 10px;
+        }
+        
+        .product-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .product-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .product-features i {
+            color: var(--yellow);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1100;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.5s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 20px 30px;
+            background-color: var(--pepper-red);
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            margin-bottom: 0;
+            color: var(--white);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .modal-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .modal-details h3 {
+            color: var(--pepper-red);
+            margin-bottom: 20px;
+        }
+        
+        .modal-specs {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .modal-specs li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 10px;
+        }
+        
+        .spec-name {
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+        
+        .spec-value {
+            color: #666;
+        }
+        
+        /* Applications Section */
+        .applications {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .application-card {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .application-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .application-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background-color: var(--pepper-red);
+            color: var(--white);
+            font-size: 2rem;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        
+        .application-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('image/Stat2.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--pepper-red);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--yellow);
+        }
+        
+        .newsletter form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter button {
+            background-color: var(--pepper-red);
+            color: var(--white);
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--pepper-red);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .hamburger {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .page-header {
+                height: 30vh;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="image/logo.jpeg" alt="ZICO OIL">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="product.html" class="active">Products</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Products</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Products Intro -->
+    <section class="products-intro">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Lubricant Products</h2>
+                <p>ZICO OIL produces and distributes a wide range of high-quality petroleum products that meet international standards and cater to diverse industrial and consumer needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-grid">
+        <div class="container">
+            <div class="products-container">
+                <!-- Product 1 -->
+                <div class="product-card" data-product="PLUS-SAE 20W50">
+                    <div class="product-img">
+                        <img src="image/plus.jpg" alt="Premium Gasoline">
+                    </div>
+                    <div class="product-content">
+                        <h3>PLUS-SAE 20W50</h3>
+                        <p>Designed for fast cars/light trucks. Available in 1ltrs only</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Excellent detergent/dispersant ability</li>
+                            <li><i class="fas fa-check"></i> Contains balanced additive package</li>
+                            <li><i class="fas fa-check"></i> Keeps engine cool</li>
+                        </ul>
+                     
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" data-product="SUPER-SAE 20W/50:API SF/CC">
+                    <div class="product-img">
+                        <img src="image/super.jpg" alt="Diesel Fuel">
+                    </div>
+                    <div class="product-content">
+                        <h3>SUPER-SAE 20W/50:API SF/CC. Available in 1ltrs and 4ltrs</h3>
+                        <p>Designed for gasoline/light diesel engine.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Effective deposit and sludge control</li>
+                            <li><i class="fas fa-check"></i> Good cold starting properties</li>
+                            <li><i class="fas fa-check"></i> High quality Base oils</li>
+                        </ul>
+                       
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" data-product="DLS 40-API CD/SF:SAE 40">
+                    <div class="product-img">
+                        <img src="image/dls.jpg" alt="Aviation Fuel">
+                    </div>
+                    <div class="product-content">
+                        <h3>DLS 40-API CD/SF:SAE 40. Available in 4ltrs and 25ltrs</h3>
+                        <p>Designed for gasoline/light diesel engine.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Minimum engine oil burning</li>
+                            <li><i class="fas fa-check"></i> Sufficient oil treatment</li>
+                            <li><i class="fas fa-check"></i>Advanced Additive Pacakage</li>
+                        </ul>
+                       
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" data-product="EXTRA-SAE 20W/50:API SL/CF-4">
+                    <div class="product-img">
+                        <img src="image/extra.jpg" alt="Lubricants">
+                    </div>
+                    <div class="product-content">
+                        <h3>EXTRA-SAE 20W/50:API SL/CF-4. Available in 1ltrs, 4ltrs and 5ltrs.</h3>
+                        <p>Designed for gasoline/light diesel engine.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Good cold starting properties</li>
+                            <li><i class="fas fa-check"></i> Keeps engine cool</li>
+                            <li><i class="fas fa-check"></i> Excellent detergent anddispersant ability</li>
+                        </ul>
+                   
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card" data-product="POWER-SAE 15W/40:API CH-4/SL">
+                    <div class="product-img">
+                        <img src="image/power.jpg" alt="Bitumen">
+                    </div>
+                    <div class="product-content">
+                        <h3>POWER-SAE 15W/40:API CH-4/SL</h3>
+                        <p>Designed for DIESEL engine. Available in 4ltrs and 25ltrs</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Zero engine oil consumption</li>
+                            <li><i class="fas fa-check"></i> Sufficient oil treatment</li>
+                            <li><i class="fas fa-check"></i> Excellent oil coolant</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card" data-product="ATF-DEXRON IIIH">
+                    <div class="product-img">
+                        <img src="image/atf.jpg" alt="LPG">
+                    </div>
+                    <div class="product-content">
+                        <h3>ATF-DEXRON IIIH</h3>
+                        <p>Available in 1 litres and 4 litres.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> ZICO ATF is a multi purpose automatic transmission fluid with extra high performance either for Commercial, Private Vehicles, and industrial machines with DEXRON specification ranges of; IIIH, IIG, IIE, IID, TASA FLUIDS etc.
+This product is manufactured with premium blends of high quality selected base stock and additive for outstanding performance, Durability and Stability. Even under the most severe conditions.</li>
+                            
+                        </ul>
+                   
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card" data-product="GEAR OIL-EP 140/API GL-4">
+                    <div class="product-img">
+                        <img src="image/gear.jpg" alt="Marine Fuel">
+                    </div>
+                    <div class="product-content">
+                        <h3>GEAR OIL-EP 140/API GL-4</h3>
+                        <p>Outstanding low and high temperature performance. Available in 4ltrs and 25ltrs.</p>
+                        <ul class="product-features">
+                           <li><i class="fas fa-check"></i>Extreme Pressure protection</li>
+                            <li><i class="fas fa-check"></i> EP Additive Package</li>
+                            <li><i class="fas fa-check"></i> Corrosion Protection</li>
+                        </ul>
+                      
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card" data-product="HYD 68-API:AW 68; SAE:ISO - VG 68">
+                    <div class="product-img">
+                        <img src="image/hyd.jpg" alt="Petrochemicals">
+                    </div>
+                    <div class="product-content">
+                        <h3>HYD 68-API:AW 68; SAE:ISO - VG 68</h3>
+                        <p>Designed For Pneumatic System. Available only in 25ltrs</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i>ISO 68 Viscosity Grade</li>
+                            <li><i class="fas fa-check"></i>Keeps Moving Parts Clean</li>
+                            <li><i class="fas fa-check"></i>Excellent Anti-ware, Anti-foam and Anti-rust Properties</li>
+                        </ul>
+                       
+                    </div>
+                </div>
+                
+               
+                
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="applications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Product Applications</h2>
+                <p>Our petroleum products serve diverse industries and applications across multiple sectors.</p>
+            </div>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Automotive</h3>
+                    <p>Fuels and lubricants for personal and commercial vehicles</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Industrial</h3>
+                    <p>Power generation, manufacturing, and processing applications</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Aviation</h3>
+                    <p>Specialized jet fuels for commercial and private aviation</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Marine</h3>
+                    <p>Fuels and lubricants for shipping and maritime operations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Need Specific Petroleum Products?</h2>
+            <p>Contact us today to discuss your requirements and discover how ZICO OIL's premium products can meet your needs.</p>
+            <a href="contact.html" class="btn btn-yellow">Contact Our Team</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ZICO PETROLEUM & MARKETING COMPANY LTD</h3>
+                    <p>Leading the way in Petroleum innovation and reliability, powering progress for a better tomorrow.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1F6GjeX4zG/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="project.html">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="service.html">Blending Plant</a></li>
+                        <li><a href="service.html">Petrol Service Station</a></li>
+                        <li><a href="service.html">LPG</a></li>
+                        <li><a href="service.html">Lubricant sales and distribution</a></li>
+                        <li><a href="service.html">Haulage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>166 Benin-Auchi Road,
+Aduwawa, Benin-City, Edo state, Nigeria</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                       <p>+234 8161521659/ +234 7051838123</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>zicoplast@yahoo.com</p>
+                    </div>
+                    <div class="newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to our newsletter for updates</p>
+                        <form>
+                            <input type="email" placeholder="Your Email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ZICO OIL. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Product Modals -->
+    <!-- Premium Gasoline Modal -->
+    <div class="modal" id="premium-gasoline-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Premium Gasoline</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Premium Gasoline">
+                </div>
+                <div class="modal-details">
+                    <h3>Product Overview</h3>
+                    <p>Our premium gasoline is engineered for high-performance engines, providing superior acceleration, engine cleanliness, and fuel efficiency. Formulated with advanced additives to protect and enhance engine performance.</p>
+                    
+                    <h3>Specifications</h3>
+                    <ul class="modal-specs">
+                        <li><span class="spec-name">Octane Rating</span><span class="spec-value">95 RON</span></li>
+                        <li><span class="spec-name">Sulfur Content</span><span class="spec-value">≤ 10 ppm</span></li>
+                        <li><span class="spec-name">Density at 15°C</span><span class="spec-value">720-780 kg/m³</span></li>
+                        <li><span class="spec-name">Vapor Pressure</span><span class="spec-value">45-90 kPa</span></li>
+                        <li><span class="spec-name">Distillation</span><span class="spec-value">30-215°C</span></li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn">Inquire About This Product</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diesel Fuel Modal -->
+    <div class="modal" id="diesel-fuel-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Diesel Fuel</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1618477388957-7a6c467f2d4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Diesel Fuel">
+                </div>
+                <div class="modal-details">
+                    <h3>Product Overview</h3>
+                    <p>Our high-quality diesel fuel is designed for optimal performance in various applications from transportation to industrial power generation. With ultra-low sulfur content and advanced additives for improved combustion and engine protection.</p>
+                    
+                    <h3>Specifications</h3>
+                    <ul class="modal-specs">
+                        <li><span class="spec-name">Cetane Number</span><span class="spec-value">≥ 51</span></li>
+                        <li><span class="spec-name">Sulfur Content</span><span class="spec-value">≤ 10 ppm</span></li>
+                        <li><span class="spec-name">Density at 15°C</span><span class="spec-value">820-845 kg/m³</span></li>
+                        <li><span class="spec-name">Flash Point</span><span class="spec-value">≥ 55°C</span></li>
+                        <li><span class="spec-name">Cold Filter Plugging Point</span><span class="spec-value">-20°C</span></li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn">Inquire About This Product</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add modals for other products following the same pattern -->
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Product modal functionality
+        const productCards = document.querySelectorAll('.product-card');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.close-modal');
+        
+        productCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const productId = card.getAttribute('data-product');
+                const modal = document.getElementById(`${productId}-modal`);
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.product-card, .application-card, .section-title');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 1s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

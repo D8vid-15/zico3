@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZICO OIL - Industrial Gear Preloader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .gear-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+        }
+
+        .gear {
+            position: absolute;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            animation: rotate 4s linear infinite;
+        }
+
+        .gear-1 {
+            width: 120px;
+            height: 120px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-top-color: #D32F2F;
+            border-right-color: #D32F2F;
+            border-bottom-color: #FFC107;
+            border-left-color: #FFC107;
+        }
+
+        .gear-2 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 20%;
+            border-top-color: #FFC107;
+            border-right-color: #D32F2F;
+            border-bottom-color: #D32F2F;
+            border-left-color: #FFC107;
+            animation-direction: reverse;
+            animation-duration: 3s;
+        }
+
+        .gear-3 {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            right: 20%;
+            border-top-color: #D32F2F;
+            border-right-color: #FFC107;
+            border-bottom-color: #FFC107;
+            border-left-color: #D32F2F;
+            animation-duration: 2.5s;
+        }
+
+        .center-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #D32F2F 0%, #b71c1c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(211, 47, 47, 0.5);
+        }
+
+        .center-logo::before {
+            content: 'Z';
+            color: #FFC107;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .loading-text {
+            color: #FFC107;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #D32F2F 0%, #FFC107 100%);
+            border-radius: 2px;
+            width: 0%;
+            animation: loadProgress 2.5s ease forwards;
+        }
+
+        .company-name {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        .tagline {
+            color: #D32F2F;
+            font-size: 14px;
+            margin-top: 5px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes loadProgress {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Oil drop effect */
+        .oil-drops {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .oil-drop {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #D32F2F;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: oilFlow 3s ease-in-out infinite;
+        }
+
+        .oil-drop:nth-child(1) {
+            top: 30%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .oil-drop:nth-child(2) {
+            top: 60%;
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .oil-drop:nth-child(3) {
+            top: 40%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        @keyframes oilFlow {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.2);
+                opacity: 0.3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gear-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .gear-1 {
+                width: 90px;
+                height: 90px;
+            }
+
+            .gear-2 {
+                width: 60px;
+                height: 60px;
+            }
+
+            .gear-3 {
+                width: 45px;
+                height: 45px;
+            }
+
+            .company-name {
+                font-size: 20px;
+            }
+
+            .loading-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" id="preloader">
+        <div class="gear-container">
+            <div class="gear gear-1"></div>
+            <div class="gear gear-2"></div>
+            <div class="gear gear-3"></div>
+            <div class="center-logo"></div>
+        </div>
+
+        <div class="oil-drops">
+            <div class="oil-drop"></div>
+            <div class="oil-drop"></div>
+            <div class="oil-drop"></div>
+        </div>
+
+        <div class="loading-text">LOADING...</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="company-name">ZICO PETROLEUM</div>
+        <div class="tagline">Powering Tomorrow</div>
+    </div>
+
+    <script>
+        // Simulate loading time and hide preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                preloader.classList.add('hidden');
+
+                // Remove from DOM after animation
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 2500); // 2.5 seconds loading time
+        });
+
+        // Optional: Manual close after 5 seconds as fallback
+        setTimeout(function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('hidden')) {
+                preloader.classList.add('hidden');
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

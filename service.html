@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - ZICO OIL</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --pepper-red: #D32F2F;
+            --yellow: #FFC107;
+            --dark-gray: #333333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--pepper-red);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+        }
+        
+        .btn-yellow {
+            background-color: var(--yellow);
+            color: var(--dark-gray);
+        }
+        
+        .btn-yellow:hover {
+            background-color: #ffa000;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .logo-text span:first-child {
+            color: var(--pepper-red);
+        }
+        
+        .logo-text span:last-child {
+            color: var(--yellow);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--yellow);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--yellow);
+        }
+
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            height: 40vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('image/serv2.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+        }
+        
+        .breadcrumb a {
+            color: var(--yellow);
+            text-decoration: none;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 10px;
+            color: var(--white);
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+        }
+        
+        /* Services Overview */
+        .services-overview {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--pepper-red);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Services Tabs */
+        .services-tabs {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .tabs-sidebar {
+            width: 25%;
+            padding-right: 30px;
+        }
+        
+        .tabs-content {
+            width: 75%;
+        }
+        
+        .tab-buttons {
+            list-style: none;
+        }
+        
+        .tab-buttons li {
+            margin-bottom: 10px;
+        }
+        
+        .tab-btn {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            background-color: var(--white);
+            border: none;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .tab-btn:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .tab-btn.active {
+            border-left-color: var(--pepper-red);
+            background-color: var(--white);
+            color: var(--pepper-red);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .tab-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .tab-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .tab-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .tab-text h3 {
+            font-size: 1.8rem;
+            color: var(--pepper-red);
+            margin-bottom: 20px;
+        }
+        
+        .tab-features {
+            margin: 20px 0;
+            list-style: none;
+        }
+        
+        .tab-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tab-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--yellow);
+            font-weight: bold;
+        }
+        
+        /* Service Cards */
+        .service-cards {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-card-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-card-content {
+            padding: 25px;
+        }
+        
+        .service-card-content h3 {
+            font-size: 1.5rem;
+            color: var(--pepper-red);
+            margin-bottom: 15px;
+        }
+        
+        .service-card-content p {
+            margin-bottom: 20px;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('image/Stat2.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 10px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background-color: var(--pepper-red);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--pepper-red);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--yellow);
+        }
+        
+        .newsletter form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter button {
+            background-color: var(--pepper-red);
+            color: var(--white);
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--pepper-red);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .tabs-sidebar {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .tabs-content {
+                width: 100%;
+            }
+            
+            .tab-content-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+                z-index: 1001;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 22px;
+            }
+            
+            .page-header {
+                height: 30vh;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="image/logo.jpeg" alt="ZICO OIL">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="service.html" class="active">Services</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                   
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Services</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comprehensive Lubricant Solutions</h2>
+                <p>ZICO PETROLEUM & MARKETING COMPANY LTD provides end-to-end Petroleum services across the entire value chain, from blending and production to refining, distribution, and retail. Our integrated approach ensures reliability, efficiency, and sustainability in all our operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Tabs -->
+    <section class="services-tabs">
+        <div class="container">
+            <div class="tabs-container">
+                <div class="tabs-sidebar">
+                    <ul class="tab-buttons">
+                        <li><button class="tab-btn active" data-tab="tab1">Blending Plant</button></li>
+                        <li><button class="tab-btn" data-tab="tab2">Petrol Service Station</button></li>
+                        <li><button class="tab-btn" data-tab="tab3">LPG</button></li>
+                        <li><button class="tab-btn" data-tab="tab4">Lubricant Sales and Distribution</button></li>
+                        <li><button class="tab-btn" data-tab="tab5">Haulage Services</button></li>
+                    </ul>
+                </div>
+                <div class="tabs-content">
+                    <div class="tab-content active" id="tab1">
+                        <div class="tab-content-inner">
+                            <div class="tab-image">
+                                <img src="image/blend.jpg" alt="Blending Plant">
+                            </div>
+                            <div class="tab-text">
+                                <h3>Blending Plant</h3>
+                                <p>Our blending plant leverages advanced technology and modern infrastructure to formulate and produce high-quality lubricants and specialty petroleum products. With precision operations and strict quality control, we ensure reliability, efficiency, and environmental responsibility across every stage of production.</p>
+                                <ul class="tab-features">
+                                    <li>Formulation development and customization</li>
+                                    <li>Base oil and additive integration</li>
+                                    <li>Automated blending operations</li>
+                                    <li>Quality control and laboratory testing</li>
+                                    <li>Packaging and distribution management</li>
+                                </ul>
+                                <a href="contact.html" class="btn">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab2">
+                        <div class="tab-content-inner">
+                            <div class="tab-image">
+                                <img src="image/filling.jpeg" alt="Petrol Service Station">
+                            </div>
+                            <div class="tab-text">
+                                <h3>Petrol Service Station</h3>
+                                <p>Our petrol service stations are designed to provide customers with reliable, safe, and efficient fueling services. With modern facilities and customer-focused operations, we ensure convenience while upholding the highest standards of quality and safety.</p>
+                                <ul class="tab-features">
+                                    <li>Retail fuel dispensing.</li>
+                                    <li>Vehicle lubrication and servicing.</li>
+                                    <li>Convenience store operations.</li>
+                                    <li>Safety and environmental compliance.</li>
+                                    <li>Customer care and support services.</li>
+                                </ul>
+                                <a href="contact.html" class="btn">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab3">
+                        <div class="tab-content-inner">
+                            <div class="tab-image">
+                                <img src="image/gas.png" alt="LPG">
+                            </div>
+                            <div class="tab-text">
+                                <h3>LPG</h3>
+                                <p>Our Liquefied Petroleum Gas (LPG) operations provide clean, safe, and efficient energy solutions for households, businesses, and industries. With advanced storage, handling, and distribution systems, we ensure reliability while promoting sustainable energy alternatives.</p>
+                                <ul class="tab-features">
+                                    <li>Bulk LPG storage and handling.</li>
+                                    <li>Cylinder filling and distribution.</li>
+                                    <li>Industrial and domestic supply solutions.</li>
+                                    <li>Safety monitoring and compliance.</li>
+                                    <li>Customer education and support services.</li>
+                                </ul>
+                                <a href="contact.html" class="btn">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab4">
+                        <div class="tab-content-inner">
+                            <div class="tab-image">
+                                <img src="image/diss.jpg" alt="Lubricant Sales and Distribution">
+                            </div>
+                            <div class="tab-text">
+                                <h3>Lubricant Sales and Distribution</h3>
+                                <p>Our lubricant sales and distribution network ensures the availability of premium-quality lubricants to a wide range of customers, from industrial clients to individual consumers. With efficient logistics and strong customer relations, we guarantee timely delivery and product reliability.</p>
+                                <ul class="tab-features">
+                                    <li>Wholesale and retail lubricant sales.</li>
+                                    <li>Industrial and automotive supply solutions.</li>
+                                    <li>Dealer and distributor network management.</li>
+                                    <li>Logistics and supply chain optimization.</li>
+                                    <li>Customer support and after-sales service.</li>
+                                </ul>
+                                <a href="contact.html" class="btn">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab5">
+                        <div class="tab-content-inner">
+                            <div class="tab-image">
+                                <img src="image/haulage.jpg" alt="Haulage Services">
+                            </div>
+                            <div class="tab-text">
+                                <h3>Haulage Services</h3>
+                                <p>Our haulage division provides safe and efficient transportation of petroleum products across the region. With a modern fleet of tanker trucks and highly trained drivers, we ensure the reliable delivery of products to our customers while maintaining the highest safety standards.</p>
+                                <ul class="tab-features">
+                                    <li>Product transportation services</li>
+                                    <li>Fleet management and maintenance</li>
+                                    <li>Logistics and route planning</li>
+                                    <li>Safety and compliance management</li>
+                                    <li>Emergency response services</li>
+                                </ul>
+                                <a href="IK.html" class="btn">Contact IK Enterprise Ltd</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="service-cards">
+        <div class="container">
+            <div class="section-title">
+                <h2>Specialized Services</h2>
+                <p>In addition to our core operations, we offer specialized services to meet the diverse needs of the energy industry.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="service-card">
+                    <div class="service-card-img">
+                        <img src="image/cust.jpg" alt="Custom Lubricant Formulation">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>Custom Lubricant Formulation</h3>
+                        <p>Developing tailored lubricants to meet unique industrial, automotive, and machinery requirements.</p>
+                       
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-img">
+                        <img src="image/sup.jpg" alt="Technical Support and After-Sales Service">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>Technical Support and After-Sales Service</h3>
+                        <p>Providing expert guidance, product usage training, and performance monitoring for clients.</p>
+                        
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-img">
+                        <img src="image/test.jpg" alt="Lubricant Testing and Quality Assurance">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>Lubricant Testing and Quality Assurance</h3>
+                        <p>Offering laboratory analysis and field testing to ensure product efficiency, durability, and compliance with global standards.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="35">0</div>
+                    <h3>Years of Experience</h3>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="150">0</div>
+                    <h3>Projects Completed</h3>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="13">0</div>
+                    <h3>Operating States</h3>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="1000">0</div>
+                    <h3>Employees</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Partner With Us?</h2>
+            <p>Discover how ZICO OIL's comprehensive services can meet your energy needs and drive your business forward.</p>
+            <a href="contact.html" class="btn btn-yellow">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ZICO PETROLEUM & MARKETING COMPANY LTD</h3>
+                    <p>Leading the way in Petroleum innovation and reliability, powering progress for a better tomorrow.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1F6GjeX4zG/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="project.html">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="service.html">Blending Plant</a></li>
+                        <li><a href="service.html">Petrol Service Station</a></li>
+                        <li><a href="service.html">LPG</a></li>
+                        <li><a href="service.html">Lubricant sales and distribution</a></li>
+                        <li><a href="service.html">Haulage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>166 Benin-Auchi Road,
+Aduwawa, Benin-City, Edo state, Nigeria</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                       <p>+234 8161521659/ +234 7051838123</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>zicoplast@yahoo.com</p>
+                    </div>
+                    <div class="newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to our newsletter for updates</p>
+                        <form>
+                            <input type="email" placeholder="Your Email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ZICO OIL. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Animated stats counter
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start) + '+';
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Initialize counters when stats section is in view
+        const statsSection = document.querySelector('.stats');
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let counted = false;
+
+        function checkIfInView() {
+            const rect = statsSection.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScroll() {
+            if (checkIfInView() && !counted) {
+                counted = true;
+                statNumbers.forEach(stat => {
+                    const end = parseInt(stat.getAttribute('data-count'));
+                    animateValue(stat, 0, end, 2000);
+                });
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+
+    </script>
+</body>
+</html>
